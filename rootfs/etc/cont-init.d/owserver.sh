@@ -15,9 +15,10 @@ elif bashio::var.equals "${device_type}" "usb"; then
     sed -i "s/%%device%%/usb = all/g" /etc/owfs.conf
 elif bashio::var.equals "${device_type}" "pbm"; then
     bashio::log.info "Configuring usb device"
-    sed -i "s/%%device%%/server: usb = all/g" /etc/owfs.conf   
-    sed -i "s/#%%usb_scan%%/server: usb = scan/g" /etc/owfs.conf
-    sed -i "s/%%pbm_device%%/pbm = ${device}/g" /etc/owfs.conf 
+    sed -i "s/%%device%%/server: pbm /dev/ttyUSB0/g" /etc/owfs.conf   
+    #sed -i "s/%%device%%/server: usb = all/g" /etc/owfs.conf   
+    #sed -i "s/#%%usb_scan%%/server: usb = scan/g" /etc/owfs.conf
+    #sed -i "s/%%pbm_device%%/pbm = ${device}/g" /etc/owfs.conf 
 elif bashio::var.equals "${device_type}" "ha7net"; then
     if  bashio::config.exists "ha7net_server"; then
         bashio::log.info "Configuring ha7net device"
